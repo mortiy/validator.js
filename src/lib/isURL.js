@@ -85,13 +85,13 @@ export default function isURL(url, options) {
     if (options.require_valid_protocol && options.protocols.indexOf(protocol) === -1) {
       return false;
     }
-  } else if (options.require_protocol) {
-    return false;
   } else if (url.slice(0, 2) === '//') {
     if (!options.allow_protocol_relative_urls) {
       return false;
     }
     split[0] = url.slice(2);
+  } else if (options.require_protocol) {
+    return false;
   }
   url = split.join('://');
 
